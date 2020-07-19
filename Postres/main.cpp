@@ -12,7 +12,7 @@ struct postre{string nombre, pasos;
 			  lista<ingrediente> i;
 };
 int main(int argc, char** argv) {
-	int i,j,pos,num_ingre,op;
+	int i,j,pos,num_ingre,op,pos2;
 	bool seguir = true;
 	ingrediente auxI;
 	lista<postre> listP;
@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 		cout<<"3. Eliminar postre."<<endl;
 		cout<<"4. Insertar ingredientes postre."<<endl;
 		cout<<"5. Modificar ingredientes postre."<<endl;
-		cout<<"6. Eliminar ingresientes postre."<<endl;
+		cout<<"6. Eliminar ingredientes postre."<<endl;
 		cout<<"7. Mostrar postre."<<endl;
 		cout<<"8. Mostrar lista de postres."<<endl;
 		cout<<"9. Salir."<<endl;
@@ -76,8 +76,8 @@ int main(int argc, char** argv) {
 				listP.cambiar(pos,P);
 				break;
 			case 5:
-				cout<<"Ingrese la posición del postre: ";cin>>pos;
-				listP.buscar(pos,&P);
+				cout<<"Ingrese la posición del postre: ";cin>>pos2;
+				listP.buscar(pos2,&P);
 				cout<<"Los ingredientes del postre son:"<<endl;
 				pos = 1;
 				while(pos<=P.i.get_tam())
@@ -92,10 +92,11 @@ int main(int argc, char** argv) {
 				cout<<"Unidad de medida: ";cin>>auxI.medida;
 				cout<<"Cantidad: ";cin>>auxI.cantidad;
 				P.i.cambiar(pos,auxI);
+				listP.cambiar(pos2,P);
 				break;
 			case 6:
-				cout<<"Ingrese la posición del postre: ";cin>>pos;
-				listP.buscar(pos,&P);
+				cout<<"Ingrese la posición del postre: ";cin>>pos2;
+				listP.buscar(pos2,&P);
 				cout<<"Los ingredientes del postre son:"<<endl;
 				pos = 1;
 				while(pos<=P.i.get_tam())
@@ -106,6 +107,7 @@ int main(int argc, char** argv) {
 				}
 				cout<<"Cuál ingrediente desea eliminar?: ";cin>>pos;
 				P.i.borrar(pos);
+				listP.cambiar(pos2,P);
 				break;
 			case 7:
 				cout<<"Ingrese la posición del postre a observar: ";cin>>pos;
