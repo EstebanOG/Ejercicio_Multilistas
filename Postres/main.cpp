@@ -44,6 +44,20 @@ int main(int argc, char** argv) {
 				listP.insertar_final(P);
 				break;
 			case 2:
+				pos=1;
+				cout<<"Lista de postres:"<<endl;
+				while(pos<=listP.get_tam())
+				{
+					listP.buscar(pos, &P);
+					cout<<pos<<". "<<P.nombre<<endl;
+					pos++;
+				}
+				cout<<"Cuál postre desea modificar?: ";cin>>pos;
+				listP.buscar(pos,&P);
+				cout<<"Nombre del postre: ";cin>>P.nombre;
+				cout<<"Numero de minutos para su preparacion: ";cin>>P.min_preparacion;
+				cout<<"Cómo se prepara?: ";cin>>P.pasos;
+				listP.cambiar(pos,P);
 				break;
 			case 3:
 				cout<<"Ingrese la posicion del postre que desea eliminar: ";cin>>pos;
@@ -62,6 +76,22 @@ int main(int argc, char** argv) {
 				listP.cambiar(pos,P);
 				break;
 			case 5:
+				cout<<"Ingrese la posición del postre: ";cin>>pos;
+				listP.buscar(pos,&P);
+				cout<<"Los ingredientes del postre son:"<<endl;
+				pos = 1;
+				while(pos<=P.i.get_tam())
+				{
+					P.i.buscar(pos, &auxI);
+					cout<<pos<<"."<<"Nombre: "<<auxI.nombre<<endl<<"Medida: "<<auxI.medida<<endl<<"Cantidad: "<<auxI.cantidad<<endl;
+					pos++;
+				}
+				cout<<"Cuál ingrediente desea modificar?: ";cin>>pos;
+				P.i.buscar(pos, &auxI);
+				cout<<"Nombre del ingrediente: ";cin>>auxI.nombre;
+				cout<<"Unidad de medida: ";cin>>auxI.medida;
+				cout<<"Cantidad: ";cin>>auxI.cantidad;
+				P.i.cambiar(pos,auxI);
 				break;
 			case 6:
 				cout<<"Ingrese la posición del postre: ";cin>>pos;
